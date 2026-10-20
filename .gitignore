@@ -1,0 +1,30 @@
+# Local research and design references: preserve locally, never publish.
+/research/
+/drafts/
+
+# Dependencies and build output.
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# Test reports and temporary data preparation output.
+coverage/
+playwright-report/
+test-results/
+.cache/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local environment values; a documented example may be committed.
+.env
+.env.*
+!.env.example
+
+# Operating system metadata, editor backups, and logs.
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.log
