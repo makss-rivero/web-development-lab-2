@@ -4,9 +4,8 @@ A university web development project exploring population, employment, and earni
 five statistical regions. The planned dashboard uses official statistics from Latvia's Central
 Statistical Bureau and follows the Data Desk design.
 
-The project configuration and runtime statistics client are implemented. The current page provides
-a small Rīga data preview with loading, refresh, and retry controls. The regional map and full
-dashboard layout are the next implementation stages.
+The current page shows the five official region outlines and a Rīga data preview with loading,
+refresh, and retry controls. The full dashboard layout, filters, and map interactions come next.
 
 ## Requirements
 
@@ -65,13 +64,12 @@ extension enabled, VS Code applies available fixes when you save with Cmd+S or C
 ```text
 public/           Static assets
 src/
-  components/     Reserved for dashboard components
-  data/           One module for CSB queries, cached responses, and value lookup
+  components/     Latvia map and future dashboard components
+  data/           Runtime statistics client and prepared map geometry
   styles/         Application styles
   utils/          Reserved for shared utilities
   App.tsx         Application entry component
   main.tsx        React bootstrap
-scripts/          Reserved for geometry preparation
 ```
 
 ## Statistics at runtime
@@ -106,10 +104,24 @@ Keep these definitions when adding dashboard features:
 - Employment and unemployment rates have different denominators. Industry employment has no
   age-group selector; its total includes unclassified activity and rounding differences.
 
+## Region map
+
+[LatviaMap.tsx](src/components/LatviaMap.tsx) draws five SVG paths from
+[regions.json](src/data/regions.json). Region codes match those in the statistics client; names
+come from its shared `REGIONS` list. Geometry is a local asset, so the map renders even when the
+statistics API is unavailable. The initial map uses neutral fills and labels.
+
+The [official CSB boundary archive](https://data.gov.lv/dati/eng/dataset/robezas/resource/fa44b8cd-13d5-4306-b04a-f162d6057292)
+is dated **1 January 2026**, generalized at **1:2,400,000**, and published under **CC0 1.0**.
+This boundary date is separate from the selected statistics year. The five region outlines were
+prepared once from these boundaries and stored in a `1000 × 650` SVG coordinate space. The app uses
+this fixed asset directly, with each region available for future selection and data coloring.
+
 ## Verification
 
 Run `npm run check` and `npm run build`. These do not need the live statistics API.
 Review loading, refresh, and retry in the browser, including a blocked request or offline state.
+Check that the map has five labelled regions, remains proportional, and fits narrow screens.
 The project uses direct checks without test files or a test framework.
 
 ## Local references and generated files

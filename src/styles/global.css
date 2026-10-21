@@ -32,8 +32,8 @@ select {
 }
 
 .welcome-card {
-    width: min(100%, 680px);
-    padding: clamp(28px, 6vw, 48px);
+    width: min(100%, 960px);
+    padding: clamp(16px, 4vw, 48px);
     border: 1px solid #dfe5ed;
     border-radius: 12px;
     background: #fff;
@@ -65,6 +65,46 @@ h1 {
     color: #647287;
     font-size: 15px;
     line-height: 1.7;
+}
+
+.region-map {
+    margin: 24px 0 0;
+}
+
+.region-map svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #dfe5ed;
+    border-radius: 8px;
+    background: #f7f9fc;
+}
+
+.region-shape {
+    fill: #e5ecf5;
+    stroke: #7a8ea9;
+    stroke-width: 1;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.region-name {
+    fill: #24344e;
+    font-size: 24px;
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+.region-map figcaption {
+    margin-top: 10px;
+    color: #526279;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.region-map a {
+    color: #214f98;
 }
 
 .data-preview {
@@ -120,6 +160,16 @@ button:disabled {
 :focus-visible {
     outline: 3px solid #3975d3;
     outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+    .welcome {
+        padding: 12px;
+    }
+
+    .region-name {
+        font-size: 38px;
+    }
 }
 
 @media (max-width: 480px) {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import LatviaMap from './components/LatviaMap'
 import { DEFAULT_REGION, DEFAULT_YEAR, getValue, loadStatistics, SOURCES } from './data/statistics'
 import type { Statistics } from './data/statistics'
 
@@ -63,6 +64,7 @@ export default function App() {
                 <p className="introduction">
                     Population, employment and earnings across Latvia’s five statistical regions.
                 </p>
+                <LatviaMap />
                 <section className="data-preview" aria-labelledby="preview-title">
                     <h2 id="preview-title">Rīga region · {DEFAULT_YEAR}</h2>
                     <p className="data-note">
