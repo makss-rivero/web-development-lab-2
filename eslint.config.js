@@ -6,37 +6,42 @@ import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores([
-    'dist/**',
-    'coverage/**',
-    'playwright-report/**',
-    'test-results/**',
-    '.cache/**',
-    'drafts/**',
-    'research/**',
-  ]),
-  {
-    files: ['**/*.{js,mjs}'],
-    extends: [js.configs.recommended],
-    languageOptions: {
-      globals: globals.node,
+    globalIgnores([
+        'dist/**',
+        'coverage/**',
+        'playwright-report/**',
+        'test-results/**',
+        '.cache/**',
+        'drafts/**',
+        'research/**',
+    ]),
+    {
+        files: ['**/*.{js,mjs}'],
+        extends: [js.configs.recommended],
+        languageOptions: {
+            globals: globals.node,
+        },
     },
-  },
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [js.configs.recommended, tseslint.configs.recommended],
-  },
-  {
-    files: ['src/**/*.{ts,tsx}'],
-    extends: [reactHooks.configs.flat.recommended, reactRefresh.configs.vite],
-    languageOptions: {
-      globals: globals.browser,
+    {
+        files: ['**/*.{ts,tsx}'],
+        extends: [js.configs.recommended, tseslint.configs.recommended],
     },
-  },
-  {
-    files: ['vite.config.ts', 'scripts/**/*.ts'],
-    languageOptions: {
-      globals: globals.node,
+    {
+        files: ['src/**/*.{ts,tsx}'],
+        extends: [reactHooks.configs.flat.recommended, reactRefresh.configs.vite],
+        languageOptions: {
+            globals: globals.browser,
+        },
     },
-  },
+    {
+        files: ['vite.config.ts', 'scripts/**/*.ts'],
+        languageOptions: {
+            globals: globals.node,
+        },
+    },
+    {
+        rules: {
+            curly: ['error', 'all'],
+        },
+    },
 ])

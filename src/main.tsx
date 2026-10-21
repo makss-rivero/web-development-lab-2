@@ -6,11 +6,11 @@ import './styles/global.css'
 const root = document.getElementById('root')
 
 if (!root) {
-  throw new Error('The application root element is missing.')
+    throw new Error('The application root element is missing.')
 }
 
 createRoot(root).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+    <StrictMode>
+        <App />
+    </StrictMode>,
 )
