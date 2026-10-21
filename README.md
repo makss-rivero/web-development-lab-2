@@ -1,11 +1,17 @@
 # Latvia Data Desk
 
 A university web development project exploring population, employment, and earnings across Latvia's
-five statistical regions. The planned dashboard uses official statistics from Latvia's Central
+five statistical regions. The dashboard uses official statistics from Latvia's Central
 Statistical Bureau and follows the Data Desk design.
 
-The current page shows the five official region outlines and a Rīga data preview with loading,
-refresh, and retry controls. The full dashboard layout, filters, and map interactions come next.
+The dashboard uses a light theme with a large Latvia map, a Rīga profile, and a comparison table
+for all five regions. It shows live 2025 statistics, with one loading, refresh, and retry area.
+The profile adds population share and the four leading industry groups without repeating the
+table's regional figures. Industry bars use a 0–100% scale, and numbers use Latvian formatting
+(`lv-LV`).
+
+Year/layer controls, map buttons, and CSV export are currently disabled; their behavior comes in
+later implementation steps. The app uses a single light palette, with no theme switch or theme storage.
 
 ## Requirements
 
@@ -64,10 +70,10 @@ extension enabled, VS Code applies available fixes when you save with Cmd+S or C
 ```text
 public/           Static assets
 src/
-  components/     Latvia map and future dashboard components
+  components/     Latvia map, region profile, and comparison table
   data/           Runtime statistics client and prepared map geometry
   styles/         Application styles
-  utils/          Reserved for shared utilities
+  utils/          Shared number formatting
   App.tsx         Application entry component
   main.tsx        React bootstrap
 ```
@@ -77,7 +83,8 @@ src/
 [statistics.ts](src/data/statistics.ts) fetches four tables from the
 [CSB API v2](https://stat.gov.lv/en/api-un-kodu-vardnicas/api-v2), keeps them in memory, and looks up
 values by region, year, and metric. All queries cover 2021–2025, the five regions, and Latvia (`LV`).
-No backend, API key, or extra data library is needed.
+No backend, API key, or extra data library is needed. The layout currently reads the default 2025
+view from those responses; filter controls will later choose other years and regions.
 
 | Table                                                                            | Data                                                                      |
 | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -109,7 +116,8 @@ Keep these definitions when adding dashboard features:
 [LatviaMap.tsx](src/components/LatviaMap.tsx) draws five SVG paths from
 [regions.json](src/data/regions.json). Region codes match those in the statistics client; names
 come from its shared `REGIONS` list. Geometry is a local asset, so the map renders even when the
-statistics API is unavailable. The initial map uses neutral fills and labels.
+statistics API is unavailable. The map uses uniform fills and labels, with Rīga outlined to match
+the profile. Colors do not yet encode statistical values.
 
 The [official CSB boundary archive](https://data.gov.lv/dati/eng/dataset/robezas/resource/fa44b8cd-13d5-4306-b04a-f162d6057292)
 is dated **1 January 2026**, generalized at **1:2,400,000**, and published under **CC0 1.0**.
@@ -122,6 +130,9 @@ this fixed asset directly, with each region available for future selection and d
 Run `npm run check` and `npm run build`. These do not need the live statistics API.
 Review loading, refresh, and retry in the browser, including a blocked request or offline state.
 Check that the map has five labelled regions, remains proportional, and fits narrow screens.
+Review the map/profile columns on desktop and their stacked layout on phones. The comparison table
+scrolls horizontally on narrow screens, with region names pinned on the left; focus the table and
+use the arrow keys to scroll. A dark system preference should still show the light interface.
 The project uses direct checks without test files or a test framework.
 
 ## Local references and generated files
