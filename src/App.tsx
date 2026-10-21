@@ -1,40 +1,40 @@
-import { useEffect, useState } from 'react'
-import ComparisonTable from './components/ComparisonTable'
-import LatviaMap from './components/LatviaMap'
-import RegionProfile from './components/RegionProfile'
-import { DEFAULT_YEAR, loadStatistics, SOURCES, YEARS } from './data/statistics'
-import type { Statistics } from './data/statistics'
+import { useEffect, useState } from 'react';
+import ComparisonTable from './components/ComparisonTable';
+import LatviaMap from './components/LatviaMap';
+import RegionProfile from './components/RegionProfile';
+import { DEFAULT_YEAR, loadStatistics, SOURCES, YEARS } from './data/statistics';
+import type { Statistics } from './data/statistics';
 
 export default function App() {
-    const [statistics, setStatistics] = useState<Statistics>({ tables: {}, failed: [] })
-    const [loading, setLoading] = useState(true)
+    const [statistics, setStatistics] = useState<Statistics>({ tables: {}, failed: [] });
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        let active = true
+        let active = true;
         loadStatistics().then((result) => {
             if (active) {
-                setStatistics(result)
-                setLoading(false)
+                setStatistics(result);
+                setLoading(false);
             }
-        })
+        });
         return () => {
-            active = false
-        }
-    }, [])
+            active = false;
+        };
+    }, []);
 
     async function reload() {
-        setLoading(true)
-        setStatistics(await loadStatistics(statistics.failed.length === 0))
-        setLoading(false)
+        setLoading(true);
+        setStatistics(await loadStatistics(statistics.failed.length === 0));
+        setLoading(false);
     }
 
-    const { tables, failed } = statistics
-    let status = 'Statistics loaded.'
+    const { tables, failed } = statistics;
+    let status = 'Statistics loaded.';
     if (loading) {
-        status = 'Loading official statistics…'
+        status = 'Loading official statistics…';
     } else if (failed.length > 0) {
-        status = `Could not load: ${failed.map((id) => SOURCES[id].label).join(', ')}. `
-        status += 'Earlier figures are kept when available; — means unavailable. Retry to update.'
+        status = `Could not load: ${failed.map((id) => SOURCES[id].label).join(', ')}. `;
+        status += 'Earlier figures are kept when available; — means unavailable. Retry to update.';
     }
 
     return (
@@ -108,5 +108,5 @@ export default function App() {
                 </footer>
             </main>
         </>
-    )
+    );
 }

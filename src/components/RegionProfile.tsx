@@ -1,6 +1,6 @@
-import { DEFAULT_REGION, DEFAULT_YEAR, getValue, REGIONS } from '../data/statistics'
-import type { Statistics } from '../data/statistics'
-import { formatNumber } from '../utils/formatNumber'
+import { DEFAULT_REGION, DEFAULT_YEAR, getValue, REGIONS } from '../data/statistics';
+import type { Statistics } from '../data/statistics';
+import { formatNumber } from '../utils/formatNumber';
 
 const industryGroups = [
     { code: 'A', name: 'Agriculture & forestry' },
@@ -13,15 +13,15 @@ const industryGroups = [
     { code: 'P', name: 'Education' },
     { code: 'Q', name: 'Health & social work' },
     { code: 'R-U', name: 'Other activities' },
-]
+];
 
 export default function RegionProfile({ tables }: { tables: Statistics['tables'] }) {
-    const population = getValue(tables.IRS031, DEFAULT_REGION, DEFAULT_YEAR)
-    const national = getValue(tables.IRS031, 'LV', DEFAULT_YEAR)
+    const population = getValue(tables.IRS031, DEFAULT_REGION, DEFAULT_YEAR);
+    const national = getValue(tables.IRS031, 'LV', DEFAULT_YEAR);
     const share =
         population !== null && national !== null && national > 0
             ? (population / national) * 100
-            : null
+            : null;
 
     const industries = industryGroups
         .map(({ code, name }) => ({
@@ -34,7 +34,7 @@ export default function RegionProfile({ tables }: { tables: Statistics['tables']
         }))
         .filter((industry) => industry.share !== null)
         .sort((a, b) => (b.share ?? 0) - (a.share ?? 0))
-        .slice(0, 4)
+        .slice(0, 4);
 
     return (
         <aside className="region-profile" aria-labelledby="profile-title">
@@ -70,5 +70,5 @@ export default function RegionProfile({ tables }: { tables: Statistics['tables']
                 )}
             </section>
         </aside>
-    )
+    );
 }

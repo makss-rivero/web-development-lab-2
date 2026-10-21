@@ -59,7 +59,8 @@ npm run preview
 Open the `lab-2` folder in VS Code and enable the recommended
 [Prettier extension](https://github.com/prettier/prettier-vscode). The workspace settings format
 supported files on every save using `.prettierrc.json` and `.editorconfig`, including four-space
-indentation. Run `npm run format` to format the whole project. Existing `.prettierignore` rules apply.
+indentation and semicolons in JavaScript and TypeScript. Run `npm run format` to format the whole
+project. Existing `.prettierignore` rules apply.
 
 Always use braces for `if`, `else`, and loops, including single statements. ESLint's
 [`curly` rule](https://eslint.org/docs/latest/rules/curly) enforces this. With the recommended ESLint

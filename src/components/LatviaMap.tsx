@@ -1,10 +1,10 @@
-import regions from '../data/regions.json'
-import { DEFAULT_REGION, REGIONS } from '../data/statistics'
+import regions from '../data/regions.json';
+import { DEFAULT_REGION, REGIONS } from '../data/statistics';
 
 export default function LatviaMap() {
     const shapes = Object.entries(regions).sort(
         ([a], [b]) => Number(a === DEFAULT_REGION) - Number(b === DEFAULT_REGION),
-    )
+    );
 
     return (
         <figure className="region-map">
@@ -41,5 +41,5 @@ export default function LatviaMap() {
                 </a>
             </figcaption>
         </figure>
-    )
+    );
 }

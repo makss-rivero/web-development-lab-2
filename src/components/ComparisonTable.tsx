@@ -1,6 +1,6 @@
-import { DEFAULT_REGION, DEFAULT_YEAR, getValue, REGIONS } from '../data/statistics'
-import type { Statistics } from '../data/statistics'
-import { formatNumber } from '../utils/formatNumber'
+import { DEFAULT_REGION, DEFAULT_YEAR, getValue, REGIONS } from '../data/statistics';
+import type { Statistics } from '../data/statistics';
+import { formatNumber } from '../utils/formatNumber';
 
 export default function ComparisonTable({ tables }: { tables: Statistics['tables'] }) {
     return (
@@ -83,5 +83,5 @@ export default function ComparisonTable({ tables }: { tables: Statistics['tables
                 unavailable.
             </p>
         </section>
-    )
+    );
 }
