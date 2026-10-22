@@ -12,8 +12,8 @@ table's regional figures. Industry bars use a 0–100% scale, and numbers use La
 
 Choose a year from 2021–2025 to update the map, table, and profile. Layer buttons change the map's
 colors and highlight the matching table column; Earnings selects gross monthly earnings. Select a
-region on the map or in the table to update the profile and selection outline. Sorting and CSV
-export come in the next step.
+region on the map or in the table to update the profile and selection outline. Click a table column
+heading to sort, or choose **Export CSV** to download the selected year's regional figures.
 
 ## Requirements
 
@@ -140,6 +140,24 @@ prepared once from these boundaries and stored in a `1000 × 650` SVG coordinate
 this fixed asset directly, with native SVG and pointer events for interaction. No map library or
 geometry preparation script is needed.
 
+## Comparison table and CSV export
+
+The table starts in alphabetical region order using `lv-LV`. Click a column heading to sort by its
+names or numeric values; click again to reverse the direction. An arrow shows the current sort,
+and keyboard users can activate the headings with Enter or Space. Unavailable values stay last in
+either direction. Sorting preserves the selected region and active-layer highlight; changing the
+year or layer keeps the chosen sort.
+
+**Export CSV** downloads `latvia-regions-YEAR.csv` with all five regions in the displayed order.
+Each row includes the year, region code/name, population, employment and unemployment rates, and
+gross/net monthly earnings. Headers include units and age/observation definitions. The download
+uses comma-separated, quoted fields and UTF-8 with a BOM to preserve Latvian names. Numbers are
+unformatted, with a decimal point, and unavailable cells are empty.
+
+The table and export share the same rows from cached data and make no extra API requests. Export
+is disabled when all numeric table values are unavailable. If a refresh fails, export uses the
+earlier figures still displayed in the table, with the shared status message explaining the failure.
+
 ## Verification
 
 Run `npm run check` and `npm run build`. These do not need the live statistics API.
@@ -152,7 +170,10 @@ resets the view. Check touch selection and scrolling, missing-data hatching, and
 Confirm the five labelled regions remain proportional and fit narrow screens.
 Review the map/profile columns on desktop and their stacked layout on phones. The comparison table
 scrolls horizontally on narrow screens, with region names pinned on the left; focus the table and
-use the arrow keys to scroll. A dark system preference should still show the light interface.
+use the arrow keys to scroll. Check both sort directions, missing values, and selection after
+sorting. Download a CSV and compare its year, row order, values, and empty cells with the table.
+Confirm export is disabled when the table has no data and recovers after retry. A dark system
+preference should still show the light interface.
 The project uses direct checks without test files or a test framework.
 
 ## Local references and generated files
