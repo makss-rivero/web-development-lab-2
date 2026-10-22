@@ -182,3 +182,20 @@ export function getValue(
     const result = value[offset];
     return typeof result === 'number' && Number.isFinite(result) ? result : null;
 }
+
+export function getLayerValue(
+    tables: Statistics['tables'],
+    layer: Layer,
+    region: RegionCode,
+    year: number,
+) {
+    if (layer === 'Population') {
+        return getValue(tables.IRS031, region, year);
+    }
+    if (layer === 'Earnings') {
+        return getValue(tables.DSV041, region, year, { GRS_NET: 'GRS' });
+    }
+    return getValue(tables.NBA031, region, year, {
+        ContentsCode: layer === 'Employment' ? 'NBA0311' : 'NBA0312',
+    });
+}

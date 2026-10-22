@@ -102,7 +102,13 @@ export default function App() {
                 </div>
                 <div aria-busy={loading}>
                     <div className="exploration">
-                        <LatviaMap region={region} />
+                        <LatviaMap
+                            tables={tables}
+                            year={year}
+                            region={region}
+                            layer={layer}
+                            onRegionChange={setRegion}
+                        />
                         <RegionProfile tables={tables} year={year} region={region} />
                     </div>
                     <ComparisonTable

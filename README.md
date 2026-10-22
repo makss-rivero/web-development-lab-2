@@ -10,9 +10,10 @@ The profile adds population share and the four leading industry groups without r
 table's regional figures. Industry bars use a 0–100% scale, and numbers use Latvian formatting
 (`lv-LV`).
 
-Choose a year from 2021–2025 to update the table and profile. Layer buttons highlight the matching
-table column; Earnings selects gross monthly earnings. Select a region using its name in the table
-to update the profile and map outline. Map interaction, sorting, and CSV export come in later steps.
+Choose a year from 2021–2025 to update the map, table, and profile. Layer buttons change the map's
+colors and highlight the matching table column; Earnings selects gross monthly earnings. Select a
+region on the map or in the table to update the profile and selection outline. Sorting and CSV
+export come in the next step.
 
 ## Requirements
 
@@ -119,23 +120,36 @@ Keep these definitions when adding dashboard features:
 [LatviaMap.tsx](src/components/LatviaMap.tsx) draws five SVG paths from
 [regions.json](src/data/regions.json). Region codes match those in the statistics client; names
 come from its shared `REGIONS` list. Geometry is a local asset, so the map renders even when the
-statistics API is unavailable. The map uses uniform fills and labels, with the selected region
-outlined to match the profile and table. Colors do not yet encode statistical values.
+statistics API is unavailable. Darker blue means a higher value for the selected layer and year.
+The legend spans that year's available regional minimum and maximum; its range changes with the
+filters. Unavailable regions use diagonal hatching. The selection outline is separate from data
+colors.
+
+Hover, focus, or tap a region to show its exact value above the map. Click or tap to select it;
+keyboard users can Tab between regions and select with Enter or Space. Escape dismisses the value
+preview while a region has focus. Use **+** and **−** to zoom between 1× and 4×, drag or use arrow
+keys on a focused region to pan when zoomed, and choose **Fit** to reset the view. Focusing a region
+with the keyboard brings it into view. These controls preserve the selected filters and region.
+On touchscreens, the fitted map allows page scrolling; zoom in to pan the map with one finger.
+On phones, zoom controls sit below the map so they do not cover regions.
 
 The [official CSB boundary archive](https://data.gov.lv/dati/eng/dataset/robezas/resource/fa44b8cd-13d5-4306-b04a-f162d6057292)
 is dated **1 January 2026**, generalized at **1:2,400,000**, and published under **CC0 1.0**.
 This boundary date is separate from the selected statistics year. The five region outlines were
 prepared once from these boundaries and stored in a `1000 × 650` SVG coordinate space. The app uses
-this fixed asset directly, with each region available for future selection and data coloring.
+this fixed asset directly, with native SVG and pointer events for interaction. No map library or
+geometry preparation script is needed.
 
 ## Verification
 
 Run `npm run check` and `npm run build`. These do not need the live statistics API.
 Review loading, refresh, and retry in the browser, including a blocked request or offline state.
-Change years and layers, then select region names in the table. Confirm the values, profile, map
-outline, and selected controls stay in sync. Filters should make no additional statistics requests
-and keep the selected region. Check keyboard access to the year selector and layer/region buttons.
-Check that the map has five labelled regions, remains proportional, and fits narrow screens.
+Change years and layers, then select regions on the map and in the table. Confirm values, colors,
+legend, profile, and selection stay in sync. Filters and map navigation should make no additional
+statistics requests. Check keyboard access to the controls, region selection, and map panning.
+Verify that zoom stays within its limits, dragging does not select a different region, and Fit
+resets the view. Check touch selection and scrolling, missing-data hatching, and retry recovery.
+Confirm the five labelled regions remain proportional and fit narrow screens.
 Review the map/profile columns on desktop and their stacked layout on phones. The comparison table
 scrolls horizontally on narrow screens, with region names pinned on the left; focus the table and
 use the arrow keys to scroll. A dark system preference should still show the light interface.

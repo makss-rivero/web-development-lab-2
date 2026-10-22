@@ -203,21 +203,48 @@ button:not(:disabled):hover {
     color: var(--muted);
     font-size: 12px;
 }
+.map-readout {
+    min-height: 26px;
+    padding-top: 4px;
+    color: #24344e;
+    font-size: 14px;
+}
+.map-viewport {
+    position: relative;
+}
 .region-map svg {
     display: block;
     width: 100%;
-    height: 480px;
+    height: 440px;
+    touch-action: pan-y pinch-zoom;
+    user-select: none;
+}
+.region-map svg[data-zoomed='true'] {
+    touch-action: none;
+    cursor: grab;
+}
+.region-map [role='button'] {
+    cursor: pointer;
+}
+.region-map [role='button']:focus:not(:focus-visible) {
+    outline: none;
+}
+.region-map [role='button']:focus-visible .region-name {
+    text-decoration: underline;
 }
 .region-shape {
-    fill: #d6e3f5;
     stroke: #fff;
     stroke-width: 1.5;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
 }
-.region-map [data-selected='true'] .region-shape {
+.region-selection {
+    fill: none;
     stroke: var(--accent);
-    stroke-width: 2;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+    pointer-events: none;
 }
 .region-name {
     fill: #24344e;
@@ -225,6 +252,7 @@ button:not(:disabled):hover {
     font-weight: 600;
     text-anchor: middle;
     dominant-baseline: middle;
+    pointer-events: none;
 }
 .map-tools {
     position: absolute;
@@ -237,8 +265,8 @@ button:not(:disabled):hover {
     background: var(--surface);
 }
 .map-tools button {
-    min-height: 30px;
-    width: 30px;
+    min-height: 36px;
+    width: 36px;
     padding: 0;
     border: 0;
     font-size: 18px;
@@ -248,8 +276,44 @@ button:not(:disabled):hover {
     border-radius: 0;
     font-size: 11px;
 }
+.map-legend {
+    max-width: 420px;
+    padding: 8px 24px 0;
+    font-size: 12px;
+    color: var(--muted);
+}
+.map-scale {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+    color: #24344e;
+}
+.map-gradient {
+    flex: 1;
+    min-width: 40px;
+    height: 8px;
+    border-radius: 2px;
+    background: linear-gradient(to right, hsl(215 55% 94%), hsl(215 55% 70%));
+}
+.map-legend-note {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+    font-size: 11px;
+}
+.map-missing::before {
+    display: inline-block;
+    width: 16px;
+    height: 10px;
+    margin-right: 6px;
+    border: 1px solid #bdc6d3;
+    background: repeating-linear-gradient(135deg, #eef0f3 0 4px, #bdc6d3 4px 5px);
+    content: '';
+}
 .region-map figcaption {
-    padding: 20px 80px 20px 24px;
+    padding: 16px 24px 20px;
     font-size: 11px;
     color: var(--muted);
 }
@@ -514,15 +578,24 @@ tbody [data-selected='true'] td[data-active='true'] {
     .map-heading {
         padding: 16px 16px 0;
     }
+    .map-legend {
+        padding-inline: 16px;
+    }
     .region-name {
         font-size: 38px;
     }
     .region-map figcaption {
-        padding: 28px 70px 18px 16px;
+        padding: 16px;
     }
     .map-tools {
-        right: 12px;
-        bottom: 12px;
+        position: static;
+        display: flex;
+        width: max-content;
+        margin: 0 16px 8px auto;
+    }
+    .map-tools button:last-child {
+        border-top: 0;
+        border-left: 1px solid var(--line);
     }
     .region-profile {
         display: block;
