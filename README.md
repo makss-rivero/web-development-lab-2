@@ -4,14 +4,15 @@ A university web development project exploring population, employment, and earni
 five statistical regions. The dashboard uses official statistics from Latvia's Central
 Statistical Bureau and follows the Data Desk design.
 
-The dashboard uses a light theme with a large Latvia map, a Rīga profile, and a comparison table
-for all five regions. It shows live 2025 statistics, with one loading, refresh, and retry area.
+The dashboard uses a light theme with a large Latvia map, a region profile, and a comparison table
+for all five regions. It defaults to 2025, population, and Rīga, with one loading, refresh, and retry area.
 The profile adds population share and the four leading industry groups without repeating the
 table's regional figures. Industry bars use a 0–100% scale, and numbers use Latvian formatting
 (`lv-LV`).
 
-Year/layer controls, map buttons, and CSV export are currently disabled; their behavior comes in
-later implementation steps. The app uses a single light palette, with no theme switch or theme storage.
+Choose a year from 2021–2025 to update the table and profile. Layer buttons highlight the matching
+table column; Earnings selects gross monthly earnings. Select a region using its name in the table
+to update the profile and map outline. Map interaction, sorting, and CSV export come in later steps.
 
 ## Requirements
 
@@ -84,8 +85,8 @@ src/
 [statistics.ts](src/data/statistics.ts) fetches four tables from the
 [CSB API v2](https://stat.gov.lv/en/api-un-kodu-vardnicas/api-v2), keeps them in memory, and looks up
 values by region, year, and metric. All queries cover 2021–2025, the five regions, and Latvia (`LV`).
-No backend, API key, or extra data library is needed. The layout currently reads the default 2025
-view from those responses; filter controls will later choose other years and regions.
+No backend, API key, or extra data library is needed. Changing year, region, or layer reads from
+these responses without making additional requests.
 
 | Table                                                                            | Data                                                                      |
 | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -94,7 +95,8 @@ view from those responses; filter controls will later choose other years and reg
 | [DSV041](https://data.stat.gov.lv/pxweb/en/OSP_PUB/START__EMP__DS__DSV/DSV041/)  | Annual average gross/net monthly earnings in full-time units, all sectors |
 | [NBL061](https://data.stat.gov.lv/pxweb/en/OSP_PUB/START__EMP__NB__NBLA/NBL061/) | Employment by industry: published counts in thousands and percentages     |
 
-`App.tsx` uses ordinary React state for loading, data, and retry feedback. The initial load makes
+`App.tsx` uses ordinary React state for the filters, region selection, loading, and retry feedback.
+It passes values and a selection callback to the existing components. The initial load makes
 four requests. Reading other years or regions reuses those responses. **Refresh data** reloads all
 sources; **Retry** requests only failed sources. Failed refreshes keep earlier data. Each request
 has a 15-second timeout, and there are no automatic retries.
@@ -117,8 +119,8 @@ Keep these definitions when adding dashboard features:
 [LatviaMap.tsx](src/components/LatviaMap.tsx) draws five SVG paths from
 [regions.json](src/data/regions.json). Region codes match those in the statistics client; names
 come from its shared `REGIONS` list. Geometry is a local asset, so the map renders even when the
-statistics API is unavailable. The map uses uniform fills and labels, with Rīga outlined to match
-the profile. Colors do not yet encode statistical values.
+statistics API is unavailable. The map uses uniform fills and labels, with the selected region
+outlined to match the profile and table. Colors do not yet encode statistical values.
 
 The [official CSB boundary archive](https://data.gov.lv/dati/eng/dataset/robezas/resource/fa44b8cd-13d5-4306-b04a-f162d6057292)
 is dated **1 January 2026**, generalized at **1:2,400,000**, and published under **CC0 1.0**.
@@ -130,6 +132,9 @@ this fixed asset directly, with each region available for future selection and d
 
 Run `npm run check` and `npm run build`. These do not need the live statistics API.
 Review loading, refresh, and retry in the browser, including a blocked request or offline state.
+Change years and layers, then select region names in the table. Confirm the values, profile, map
+outline, and selected controls stay in sync. Filters should make no additional statistics requests
+and keep the selected region. Check keyboard access to the year selector and layer/region buttons.
 Check that the map has five labelled regions, remains proportional, and fits narrow screens.
 Review the map/profile columns on desktop and their stacked layout on phones. The comparison table
 scrolls horizontally on narrow screens, with region names pinned on the left; focus the table and

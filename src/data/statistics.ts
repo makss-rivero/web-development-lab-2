@@ -9,7 +9,10 @@ export const REGIONS = {
 export const YEARS = [2021, 2022, 2023, 2024, 2025];
 export const DEFAULT_YEAR = 2025;
 export const DEFAULT_REGION = 'LV00A';
+export const LAYERS = ['Population', 'Employment', 'Earnings', 'Unemployment'] as const;
 
+export type RegionCode = keyof typeof REGIONS;
+export type Layer = (typeof LAYERS)[number];
 export type TableId = 'IRS031' | 'NBA031' | 'DSV041' | 'NBL061';
 
 const sharedFilters = { AREA: ['LV', ...Object.keys(REGIONS)], TIME: YEARS.map(String) };

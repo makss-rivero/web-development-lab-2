@@ -1,8 +1,18 @@
-import { DEFAULT_REGION, DEFAULT_YEAR, getValue, REGIONS } from '../data/statistics';
-import type { Statistics } from '../data/statistics';
+import { getValue, REGIONS } from '../data/statistics';
+import type { Layer, RegionCode, Statistics } from '../data/statistics';
 import { formatNumber } from '../utils/formatNumber';
 
-export default function ComparisonTable({ tables }: { tables: Statistics['tables'] }) {
+interface Props {
+    tables: Statistics['tables'];
+    year: number;
+    region: RegionCode;
+    layer: Layer;
+    onRegionChange: (region: RegionCode) => void;
+}
+
+export default function ComparisonTable({ tables, year, region, layer, onRegionChange }: Props) {
+    const activeColumn = layer === 'Earnings' ? 'Gross earnings' : layer;
+
     return (
         <section className="comparison-card" aria-labelledby="comparison-title">
             <div className="section-heading">
@@ -19,7 +29,7 @@ export default function ComparisonTable({ tables }: { tables: Statistics['tables
             >
                 <table>
                     <caption className="visually-hidden">
-                        Statistics for Latvia’s five regions, {DEFAULT_YEAR}.
+                        Statistics for Latvia’s five regions, {year}.
                     </caption>
                     <thead>
                         <tr>
@@ -31,7 +41,7 @@ export default function ComparisonTable({ tables }: { tables: Statistics['tables
                                 ['Gross earnings', 'EUR / month'],
                                 ['Net earnings', 'EUR / month'],
                             ].map(([label, unit]) => (
-                                <th key={label} scope="col">
+                                <th key={label} scope="col" data-active={label === activeColumn}>
                                     {label}
                                     <small>{unit}</small>
                                 </th>
@@ -40,35 +50,45 @@ export default function ComparisonTable({ tables }: { tables: Statistics['tables
                     </thead>
                     <tbody>
                         {Object.entries(REGIONS).map(([code, name]) => (
-                            <tr key={code} data-selected={code === DEFAULT_REGION}>
-                                <th scope="row">{name}</th>
-                                <td>{formatNumber(getValue(tables.IRS031, code, DEFAULT_YEAR))}</td>
-                                <td>
+                            <tr key={code} data-selected={code === region}>
+                                <th scope="row">
+                                    <button
+                                        type="button"
+                                        aria-pressed={code === region}
+                                        onClick={() => onRegionChange(code as RegionCode)}
+                                    >
+                                        {name}
+                                    </button>
+                                </th>
+                                <td data-active={layer === 'Population'}>
+                                    {formatNumber(getValue(tables.IRS031, code, year))}
+                                </td>
+                                <td data-active={layer === 'Employment'}>
                                     {formatNumber(
-                                        getValue(tables.NBA031, code, DEFAULT_YEAR, {
+                                        getValue(tables.NBA031, code, year, {
                                             ContentsCode: 'NBA0311',
                                         }),
                                         1,
                                     )}
                                 </td>
-                                <td>
+                                <td data-active={layer === 'Unemployment'}>
                                     {formatNumber(
-                                        getValue(tables.NBA031, code, DEFAULT_YEAR, {
+                                        getValue(tables.NBA031, code, year, {
                                             ContentsCode: 'NBA0312',
                                         }),
                                         1,
                                     )}
                                 </td>
-                                <td>
+                                <td data-active={layer === 'Earnings'}>
                                     {formatNumber(
-                                        getValue(tables.DSV041, code, DEFAULT_YEAR, {
+                                        getValue(tables.DSV041, code, year, {
                                             GRS_NET: 'GRS',
                                         }),
                                     )}
                                 </td>
                                 <td>
                                     {formatNumber(
-                                        getValue(tables.DSV041, code, DEFAULT_YEAR, {
+                                        getValue(tables.DSV041, code, year, {
                                             GRS_NET: 'NET',
                                         }),
                                     )}

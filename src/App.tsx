@@ -2,12 +2,22 @@ import { useEffect, useState } from 'react';
 import ComparisonTable from './components/ComparisonTable';
 import LatviaMap from './components/LatviaMap';
 import RegionProfile from './components/RegionProfile';
-import { DEFAULT_YEAR, loadStatistics, SOURCES, YEARS } from './data/statistics';
-import type { Statistics } from './data/statistics';
+import {
+    DEFAULT_REGION,
+    DEFAULT_YEAR,
+    LAYERS,
+    loadStatistics,
+    SOURCES,
+    YEARS,
+} from './data/statistics';
+import type { Layer, RegionCode, Statistics } from './data/statistics';
 
 export default function App() {
     const [statistics, setStatistics] = useState<Statistics>({ tables: {}, failed: [] });
     const [loading, setLoading] = useState(true);
+    const [year, setYear] = useState(DEFAULT_YEAR);
+    const [region, setRegion] = useState<RegionCode>(DEFAULT_REGION);
+    const [layer, setLayer] = useState<Layer>('Population');
 
     useEffect(() => {
         let active = true;
@@ -60,23 +70,24 @@ export default function App() {
                             Map layer
                         </span>
                         <div className="layers" role="group" aria-labelledby="layer-label">
-                            {['Population', 'Employment', 'Earnings', 'Unemployment'].map(
-                                (label, index) => (
-                                    <button
-                                        key={label}
-                                        type="button"
-                                        aria-pressed={index === 0}
-                                        disabled
-                                    >
-                                        {label}
-                                    </button>
-                                ),
-                            )}
+                            {LAYERS.map((label) => (
+                                <button
+                                    key={label}
+                                    type="button"
+                                    aria-pressed={layer === label}
+                                    onClick={() => setLayer(label)}
+                                >
+                                    {label}
+                                </button>
+                            ))}
                         </div>
                     </div>
                     <label className="year-control">
                         Reference year
-                        <select defaultValue={DEFAULT_YEAR} disabled>
+                        <select
+                            value={year}
+                            onChange={(event) => setYear(Number(event.target.value))}
+                        >
                             {YEARS.toReversed().map((year) => (
                                 <option key={year}>{year}</option>
                             ))}
@@ -91,10 +102,16 @@ export default function App() {
                 </div>
                 <div aria-busy={loading}>
                     <div className="exploration">
-                        <LatviaMap />
-                        <RegionProfile tables={tables} />
+                        <LatviaMap region={region} />
+                        <RegionProfile tables={tables} year={year} region={region} />
                     </div>
-                    <ComparisonTable tables={tables} />
+                    <ComparisonTable
+                        tables={tables}
+                        year={year}
+                        region={region}
+                        layer={layer}
+                        onRegionChange={setRegion}
+                    />
                 </div>
                 <footer className="app-footer" id="sources">
                     <p>Source: Central Statistical Bureau of Latvia</p>

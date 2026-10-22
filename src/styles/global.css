@@ -146,6 +146,7 @@ button:not(:disabled):hover {
 .layers button {
     border: 0;
     font-size: 13px;
+    color: var(--muted);
     background: transparent;
 }
 .layers [aria-pressed='true'] {
@@ -358,7 +359,8 @@ button:not(:disabled):hover {
 .table-scroll {
     overflow-x: auto;
 }
-.table-scroll:focus-visible {
+.table-scroll:focus-visible,
+tbody th button:focus-visible {
     outline-offset: -3px;
 }
 table {
@@ -392,11 +394,23 @@ th:first-child {
     text-align: left;
     background: var(--surface);
 }
-th:nth-child(2),
-td:nth-child(2) {
+tbody th {
+    padding: 0;
+}
+tbody th button {
+    width: 100%;
+    padding: 12px 22px;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    background: transparent;
+    text-align: left;
+}
+th[data-active='true'],
+td[data-active='true'] {
     background: #f8fafd;
 }
-thead th:nth-child(2) {
+thead th[data-active='true'] {
     border-bottom: 2px solid var(--accent);
 }
 tbody [data-selected='true'] > * {
@@ -407,7 +421,7 @@ tbody [data-selected='true'] th {
     box-shadow: inset 3px 0 var(--accent);
     font-weight: 600;
 }
-tbody [data-selected='true'] td:nth-child(2) {
+tbody [data-selected='true'] td[data-active='true'] {
     color: var(--accent);
     font-weight: 600;
 }
@@ -525,7 +539,8 @@ tbody [data-selected='true'] td:nth-child(2) {
         padding-inline: 16px;
     }
     th,
-    td {
+    td,
+    tbody th button {
         padding-inline: 16px;
     }
 }

@@ -1,9 +1,10 @@
 import regions from '../data/regions.json';
-import { DEFAULT_REGION, REGIONS } from '../data/statistics';
+import { REGIONS } from '../data/statistics';
+import type { RegionCode } from '../data/statistics';
 
-export default function LatviaMap() {
+export default function LatviaMap({ region }: { region: RegionCode }) {
     const shapes = Object.entries(regions).sort(
-        ([a], [b]) => Number(a === DEFAULT_REGION) - Number(b === DEFAULT_REGION),
+        ([a], [b]) => Number(a === region) - Number(b === region),
     );
 
     return (
@@ -15,10 +16,10 @@ export default function LatviaMap() {
                     Rīga, Vidzeme, Kurzeme, Zemgale and Latgale. Boundaries as of 1 January 2026.
                 </desc>
                 {shapes.map(([code, { path, x, y }]) => (
-                    <g key={code} data-region={code} data-selected={code === DEFAULT_REGION}>
+                    <g key={code} data-region={code} data-selected={code === region}>
                         <path className="region-shape" d={path} fillRule="evenodd" />
                         <text className="region-name" x={x} y={y}>
-                            {REGIONS[code as keyof typeof REGIONS]}
+                            {REGIONS[code as RegionCode]}
                         </text>
                     </g>
                 ))}
