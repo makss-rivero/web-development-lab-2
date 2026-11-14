@@ -1,0 +1,733 @@
+{
+    "source": "Central Statistical Bureau of Latvia",
+    "license": "https://creativecommons.org/share-your-work/public-domain/cc0/",
+    "retrievedAt": "2026-10-20T17:38:04.926654+00:00",
+    "tables": {
+        "IRS031": {
+            "version": "2.0",
+            "class": "dataset",
+            "label": "Population at the beginning of year and population change and key vital statistics in regions, cities, towns and municipalities PxcMetaTitleBy Indicator, Territorial unit PxcMetaTitleAnd Time period",
+            "source": "Central Statistical Bureau of Latvia",
+            "updated": "2026-06-02T10:13:00Z",
+            "note": [
+                "<A HREF= https://stat.gov.lv/en/statistics-themes/environment/nature-resources/publications-and-infographics/21408-statistical TARGET=_blank>Additional information on statistical regions.</A>",
+                "<A HREF= https://stat.gov.lv/en/metadata/5911-population-and-key-demographic-indicators TARGET=_blank>Metadata</A>",
+                "The State cities Jēkabpils, Ogre and Valmiera are also included in the figures for the corresponding municipalities.",
+                "Time series from 1967 to 2022: <A HREF= https://data.stat.gov.lv/pxweb/en/OSP_PUB/START/IRS030  TARGET=_blank> IRS030. Population at the beginning of year and population change and key vital statistics in regions, cities, towns and municipalities </A>.",
+                "As of 2024, the territories of the statistical regions coincide with the territories of the planning regions.",
+                "In 2025, CSB changed the method for producing population estimates. Since 2012, a logistic regression model was used, but going forward, the SoL-logit model will be applied. The methods are similar, with the main difference being that the logistic regression model is a supervised model trained on data from the Population and Housing Census 2011, whereas the SoL-logit model is unsupervised model and does not require training data.\r\nTo ensure comparability, the data for 2023 and 2024 have also been recalculated using the new method.",
+                "The population estimate published on 2 June was revised on 2 October 2025, and the usually resident population now includes foreign students."
+            ],
+            "role": {
+                "time": ["TIME"],
+                "geo": ["AREA"],
+                "metric": ["ContentsCode"]
+            },
+            "id": ["INDICATOR", "AREA", "ContentsCode", "TIME"],
+            "size": [1, 6, 1, 5],
+            "dimension": {
+                "INDICATOR": {
+                    "label": "Indicator",
+                    "category": {
+                        "index": {
+                            "POP_SY": 0
+                        },
+                        "label": {
+                            "POP_SY": "Population at the beginning of the year"
+                        }
+                    },
+                    "extension": {
+                        "elimination": false,
+                        "show": "value"
+                    }
+                },
+                "AREA": {
+                    "label": "Territorial unit",
+                    "category": {
+                        "index": {
+                            "LV": 0,
+                            "LV00A": 1,
+                            "LV00C": 2,
+                            "LV00B": 3,
+                            "LV009": 4,
+                            "LV005": 5
+                        },
+                        "label": {
+                            "LV": "Latvia",
+                            "LV00A": "Riga statistical region (from 01.01.2024.)",
+                            "LV00C": "Vidzeme statistical region (from 01.01.2024.)",
+                            "LV00B": "Kurzeme statistical region (from 01.01.2024.)",
+                            "LV009": "Zemgale statistical region",
+                            "LV005": "Latgale statistical region"
+                        }
+                    },
+                    "extension": {
+                        "elimination": true,
+                        "eliminationValueCode": "LV",
+                        "show": "value"
+                    }
+                },
+                "ContentsCode": {
+                    "label": "Unit",
+                    "category": {
+                        "index": {
+                            "IRS031": 0
+                        },
+                        "label": {
+                            "IRS031": "Skaits"
+                        },
+                        "unit": {
+                            "IRS031": {
+                                "base": "number",
+                                "decimals": 0
+                            }
+                        }
+                    },
+                    "extension": {
+                        "elimination": false,
+                        "refperiod": {
+                            "IRS031": ""
+                        },
+                        "show": "value",
+                        "measuringType": {
+                            "IRS031": "Flow"
+                        },
+                        "priceType": {
+                            "IRS031": "NotApplicable"
+                        },
+                        "adjustment": {
+                            "IRS031": "None"
+                        }
+                    }
+                },
+                "TIME": {
+                    "label": "Time period",
+                    "category": {
+                        "index": {
+                            "2021": 0,
+                            "2022": 1,
+                            "2023": 2,
+                            "2024": 3,
+                            "2025": 4
+                        },
+                        "label": {
+                            "2021": "2021",
+                            "2022": "2022",
+                            "2023": "2023",
+                            "2024": "2024",
+                            "2025": "2025"
+                        }
+                    },
+                    "extension": {
+                        "elimination": false,
+                        "show": "code"
+                    }
+                }
+            },
+            "extension": {
+                "noteMandatory": {
+                    "2": true,
+                    "5": true,
+                    "6": true
+                },
+                "px": {
+                    "infofile": "001",
+                    "tableid": "IRS031",
+                    "decimals": 0,
+                    "official-statistics": true,
+                    "aggregallowed": true,
+                    "copyright": false,
+                    "language": "en",
+                    "contents": "Population at the beginning of year and population change and key vital statistics in regions, cities, towns and municipalities",
+                    "descriptiondefault": false,
+                    "heading": ["ContentsCode", "TIME"],
+                    "stub": ["INDICATOR", "AREA"],
+                    "matrix": "IRS031",
+                    "subject-code": "POP",
+                    "subject-area": "Population"
+                },
+                "discontinued": null,
+                "contact": [
+                    {
+                        "name": "Informācijas un lietotāju atbalsta daļa",
+                        "organization": "Central Statistical Bureau of Latvia",
+                        "phone": "",
+                        "mail": "info@csp.gov.lv",
+                        "raw": "Informācijas un lietotāju atbalsta daļa, Central Statistical Bureau of Latvia#  #info@csp.gov.lv"
+                    }
+                ]
+            },
+            "value": [
+                1893223, 1875757, 1895239, 1878575, 1860565, 853796, 850353, 860813, 855547, 850455,
+                278792, 276037, 279703, 276953, 274019, 280433, 277130, 280565, 278142, 274798,
+                227520, 225017, 226858, 224537, 221931, 252682, 247220, 247300, 243396, 239362
+            ]
+        },
+        "NBA031": {
+            "version": "2.0",
+            "class": "dataset",
+            "label": "Activity rate, employment rate and unemployment rate by region (per cent) PxcMetaTitleBy Age group, Territorial unit PxcMetaTitleAnd Time period",
+            "source": "Central Statistical Bureau of Latvia",
+            "updated": "2026-02-23T11:00:00Z",
+            "note": [
+                "<A HREF= https://stat.gov.lv/en/statistics-themes/environment/nature-resources/publications-and-infographics/21408-statistical TARGET=_blank>Additional information on statistical regions.</A>",
+                "<A HREF= https://stat.gov.lv/en/metadata/4285-employment-and-unemployment TARGET=_blank>Metadata</A>",
+                "... = Data not available or too uncertain for presentation",
+                "Time series from 1996 to 2021: <A HREF= https://data.stat.gov.lv/pxweb/en/OSP_PUB/START/NBA030 TARGET=_blank> NBA030. Activity rate, employment rate and unemployment rate by region (per cent) </A>.",
+                "As of 2024, the territories of the statistical regions coincide with the territories of the planning regions.",
+                "2019–2023 data recalculated based on the territories of regions in force as of the beginning of  2024."
+            ],
+            "role": {
+                "time": ["TIME"],
+                "geo": ["AREA"],
+                "metric": ["ContentsCode"]
+            },
+            "id": ["AgeGroup", "AREA", "ContentsCode", "TIME"],
+            "size": [1, 6, 2, 5],
+            "dimension": {
+                "AgeGroup": {
+                    "label": "Age group",
+                    "category": {
+                        "index": {
+                            "Y15-74": 0
+                        },
+                        "label": {
+                            "Y15-74": "15–74 years"
+                        }
+                    },
+                    "extension": {
+                        "elimination": false,
+                        "show": "value"
+                    }
+                },
+                "AREA": {
+                    "label": "Territorial unit",
+                    "category": {
+                        "index": {
+                            "LV": 0,
+                            "LV00A": 1,
+                            "LV00C": 2,
+                            "LV00B": 3,
+                            "LV009": 4,
+                            "LV005": 5
+                        },
+                        "label": {
+                            "LV": "Latvia",
+                            "LV00A": "Riga statistical region (from 01.01.2024.)",
+                            "LV00C": "Vidzeme statistical region (from 01.01.2024.)",
+                            "LV00B": "Kurzeme statistical region (from 01.01.2024.)",
+                            "LV009": "Zemgale statistical region",
+                            "LV005": "Latgale statistical region"
+                        }
+                    },
+                    "extension": {
+                        "elimination": true,
+                        "eliminationValueCode": "LV",
+                        "show": "value"
+                    }
+                },
+                "ContentsCode": {
+                    "label": "Indicator",
+                    "category": {
+                        "index": {
+                            "NBA0311": 0,
+                            "NBA0312": 1
+                        },
+                        "label": {
+                            "NBA0311": "Employment rate",
+                            "NBA0312": "Unemployment rate"
+                        },
+                        "unit": {
+                            "NBA0311": {
+                                "base": "per cent",
+                                "decimals": 1
+                            },
+                            "NBA0312": {
+                                "base": "per cent",
+                                "decimals": 1
+                            }
+                        }
+                    },
+                    "extension": {
+                        "elimination": false,
+                        "refperiod": {
+                            "NBA0311": "",
+                            "NBA0312": ""
+                        },
+                        "show": "value",
+                        "measuringType": {
+                            "NBA0311": "Flow",
+                            "NBA0312": "Flow"
+                        },
+                        "priceType": {
+                            "NBA0311": "NotApplicable",
+                            "NBA0312": "NotApplicable"
+                        },
+                        "adjustment": {
+                            "NBA0311": "None",
+                            "NBA0312": "None"
+                        }
+                    }
+                },
+                "TIME": {
+                    "label": "Time period",
+                    "category": {
+                        "index": {
+                            "2021": 0,
+                            "2022": 1,
+                            "2023": 2,
+                            "2024": 3,
+                            "2025": 4
+                        },
+                        "label": {
+                            "2021": "2021",
+                            "2022": "2022",
+                            "2023": "2023",
+                            "2024": "2024",
+                            "2025": "2025"
+                        }
+                    },
+                    "extension": {
+                        "elimination": false,
+                        "show": "code"
+                    }
+                }
+            },
+            "extension": {
+                "px": {
+                    "infofile": "001",
+                    "tableid": "NBA031",
+                    "decimals": 1,
+                    "official-statistics": true,
+                    "aggregallowed": true,
+                    "copyright": false,
+                    "language": "en",
+                    "contents": "Activity rate, employment rate and unemployment rate by region (per cent)",
+                    "descriptiondefault": false,
+                    "heading": ["ContentsCode", "TIME"],
+                    "stub": ["AgeGroup", "AREA"],
+                    "matrix": "NBA0311",
+                    "subject-code": "EMP",
+                    "subject-area": "Labour market"
+                },
+                "discontinued": null,
+                "contact": [
+                    {
+                        "name": "Informācijas un lietotāju atbalsta daļa",
+                        "organization": "Central Statistical Bureau of Latvia",
+                        "phone": "",
+                        "mail": "info@csp.gov.lv",
+                        "raw": "Informācijas un lietotāju atbalsta daļa, Central Statistical Bureau of Latvia#  #info@csp.gov.lv"
+                    }
+                ]
+            },
+            "value": [
+                62.5, 63.9, 64.2, 64, 64.5, 7.6, 6.9, 6.5, 6.9, 6.9, 66.3, 67.3, 67.2, 68, 68.3,
+                6.7, 6, 6.1, 6.5, 6.6, 60.2, 62.3, 63.1, 62.6, 63.7, 7.7, 6, 6.1, 6.5, 6.2, 59.4,
+                61.9, 63.7, 61.3, 62.1, 8.8, 7.9, 5.7, 6.5, 7.3, 60.7, 61.9, 62.5, 62.6, 64.1, 7.8,
+                7.6, 6.3, 7.4, 6, 56.7, 58.4, 56.8, 55.2, 54.9, 9.1, 9, 9.8, 9.4, 9.8
+            ]
+        },
+        "DSV041": {
+            "version": "2.0",
+            "class": "dataset",
+            "label": "Average monthly wages and salaries by region (in euro) PxcMetaTitleBy Gross/ Net, Sector, Territorial unit PxcMetaTitleAnd Time period",
+            "source": "Central Statistical Bureau of Latvia",
+            "updated": "2026-03-18T12:30:00Z",
+            "note": [
+                "<A HREF= https://stat.gov.lv/en/statistics-themes/environment/nature-resources/publications-and-infographics/21408-statistical TARGET=_blank>Additional information on statistical regions.</A>",
+                "<A HREF= https://stat.gov.lv/en/metadata/4858-average-and-real-monthly-wages-and-salaries TARGET=_blank>Metadata</A>",
+                "... = Data not available or too uncertain for presentation",
+                "Time series from 2001 to 2021: <A HREF= https://data.stat.gov.lv/pxweb/en/OSP_PUB/START/DSV040 TARGET=_blank> DSV040. Average monthly wages and salaries by region (in euro) </A>.",
+                "As of 2024, the territories of the statistical regions coincide with the territories of the planning regions."
+            ],
+            "role": {
+                "time": ["TIME"],
+                "geo": ["AREA"],
+                "metric": ["ContentsCode"]
+            },
+            "id": ["GRS_NET", "SECTOR", "AREA", "ContentsCode", "TIME"],
+            "size": [2, 1, 6, 1, 5],
+            "dimension": {
+                "GRS_NET": {
+                    "label": "Gross/ Net",
+                    "category": {
+                        "index": {
+                            "GRS": 0,
+                            "NET": 1
+                        },
+                        "label": {
+                            "GRS": "Gross",
+                            "NET": "Net"
+                        }
+                    },
+                    "extension": {
+                        "elimination": false,
+                        "show": "value"
+                    }
+                },
+                "SECTOR": {
+                    "label": "Sector",
+                    "category": {
+                        "index": {
+                            "TOTAL": 0
+                        },
+                        "label": {
+                            "TOTAL": "TOTAL"
+                        }
+                    },
+                    "extension": {
+                        "elimination": true,
+                        "eliminationValueCode": "TOTAL",
+                        "show": "value"
+                    }
+                },
+                "AREA": {
+                    "label": "Territorial unit",
+                    "category": {
+                        "index": {
+                            "LV": 0,
+                            "LV00A": 1,
+                            "LV00C": 2,
+                            "LV00B": 3,
+                            "LV009": 4,
+                            "LV005": 5
+                        },
+                        "label": {
+                            "LV": "Latvia",
+                            "LV00A": "Riga statistical region (from 01.01.2024.)",
+                            "LV00C": "Vidzeme statistical region (from 01.01.2024.)",
+                            "LV00B": "Kurzeme statistical region (from 01.01.2024.)",
+                            "LV009": "Zemgale statistical region",
+                            "LV005": "Latgale statistical region"
+                        }
+                    },
+                    "extension": {
+                        "elimination": true,
+                        "eliminationValueCode": "LV",
+                        "show": "value"
+                    }
+                },
+                "ContentsCode": {
+                    "label": "Indicator",
+                    "category": {
+                        "index": {
+                            "DSV041": 0
+                        },
+                        "label": {
+                            "DSV041": "Average monthly wages and salaries"
+                        },
+                        "unit": {
+                            "DSV041": {
+                                "base": "euro",
+                                "decimals": 0
+                            }
+                        }
+                    },
+                    "extension": {
+                        "elimination": false,
+                        "refperiod": {
+                            "DSV041": ""
+                        },
+                        "show": "value",
+                        "measuringType": {
+                            "DSV041": "Flow"
+                        },
+                        "priceType": {
+                            "DSV041": "NotApplicable"
+                        },
+                        "adjustment": {
+                            "DSV041": "None"
+                        }
+                    }
+                },
+                "TIME": {
+                    "label": "Time period",
+                    "category": {
+                        "index": {
+                            "2021": 0,
+                            "2022": 1,
+                            "2023": 2,
+                            "2024": 3,
+                            "2025": 4
+                        },
+                        "label": {
+                            "2021": "2021",
+                            "2022": "2022",
+                            "2023": "2023",
+                            "2024": "2024",
+                            "2025": "2025"
+                        }
+                    },
+                    "extension": {
+                        "elimination": false,
+                        "show": "code"
+                    }
+                }
+            },
+            "extension": {
+                "px": {
+                    "infofile": "001",
+                    "tableid": "DSV041",
+                    "decimals": 0,
+                    "official-statistics": true,
+                    "aggregallowed": true,
+                    "copyright": false,
+                    "language": "en",
+                    "contents": "Average monthly wages and salaries by region (in euro)",
+                    "descriptiondefault": false,
+                    "heading": ["ContentsCode", "TIME"],
+                    "stub": ["GRS_NET", "SECTOR", "AREA"],
+                    "matrix": "DSV041",
+                    "subject-code": "EMP",
+                    "subject-area": "Labour market"
+                },
+                "discontinued": null,
+                "contact": [
+                    {
+                        "name": "Informācijas un lietotāju atbalsta daļa",
+                        "organization": "Central Statistical Bureau of Latvia",
+                        "phone": "",
+                        "mail": "info@csp.gov.lv",
+                        "raw": "Informācijas un lietotāju atbalsta daļa, Central Statistical Bureau of Latvia#  #info@csp.gov.lv"
+                    }
+                ]
+            },
+            "value": [
+                1277, 1373, 1537, 1685, 1815, 1410, 1516, 1688, 1849, 1990, 1011, 1085, 1224, 1356,
+                1508, 1079, 1154, 1303, 1401, 1501, 1089, 1155, 1293, 1428, 1509, 896, 961, 1083,
+                1212, 1302, 939, 1006, 1119, 1221, 1346, 1031, 1103, 1223, 1332, 1464, 756, 810,
+                908, 996, 1140, 800, 853, 956, 1024, 1132, 807, 854, 953, 1044, 1140, 677, 728, 818,
+                904, 1005
+            ]
+        },
+        "NBL061": {
+            "version": "2.0",
+            "class": "dataset",
+            "label": "Employed by economic activity (NACE Rev. 2.) and region PxcMetaTitleBy Territorial unit, Economic activity (NACE Rev. 2) PxcMetaTitleAnd Time period",
+            "source": "Central Statistical Bureau of Latvia",
+            "updated": "2026-02-23T11:00:00Z",
+            "note": [
+                "<A HREF= https://stat.gov.lv/en/statistics-themes/environment/nature-resources/publications-and-infographics/21408-statistical TARGET=_blank>Additional information on statistical regions.</A>",
+                "The total number includes persons who have not indicated their kind of activity.",
+                "<A HREF= https://stat.gov.lv/en/metadata/4285-employment-and-unemployment TARGET=_blank>Metadata</A>",
+                "... = Data not available or too uncertain for presentation",
+                "Time series from 2008 to 2021: <A HREF= https://data.stat.gov.lv/pxweb/en/OSP_PUB/START/NBL060 TARGET=_blank> NBL060. Employed by economic activity (NACE Rev. 2.) and region – Territorial unit, Economic activity (NACE Rev. 2) </A>.",
+                "As of 2024, the territories of the statistical regions coincide with the territories of the planning regions.",
+                "2019–2023 data recalculated based on the territories of regions in force as of the beginning of  2024.",
+                "Differences in employment data between the NBA/NBL and EKA tables (e.g., NBA010 and EKA011) as well as in employment breakdowns by occupation (e.g., NBL080 and EKA051), economic activity (e.g., NBL040 and EKA071), and status in employment (e.g. NBL070 and EKA041) ­– arise from the data collection and compilation methods applied. \r\n\r\n In the tables NBA and NBL, data are obtained from the continuous Labour Force Survey (LFS), which provides information on the labour status of population (employment and unemployment).      \r\n\r\nIn the EKA tables, data on labour status, occupation, economic activity, and status in employment are compiled annually from administrative data sources. "
+            ],
+            "role": {
+                "time": ["TIME"],
+                "geo": ["AREA"],
+                "metric": ["ContentsCode"]
+            },
+            "id": ["AREA", "NACE", "ContentsCode", "TIME"],
+            "size": [6, 11, 2, 5],
+            "dimension": {
+                "AREA": {
+                    "label": "Territorial unit",
+                    "category": {
+                        "index": {
+                            "LV": 0,
+                            "LV00A": 1,
+                            "LV00C": 2,
+                            "LV00B": 3,
+                            "LV009": 4,
+                            "LV005": 5
+                        },
+                        "label": {
+                            "LV": "Latvia",
+                            "LV00A": "Riga statistical region (from 01.01.2024.)",
+                            "LV00C": "Vidzeme statistical region (from 01.01.2024.)",
+                            "LV00B": "Kurzeme statistical region (from 01.01.2024.)",
+                            "LV009": "Zemgale statistical region",
+                            "LV005": "Latgale statistical region"
+                        }
+                    },
+                    "extension": {
+                        "elimination": true,
+                        "eliminationValueCode": "LV",
+                        "show": "value"
+                    }
+                },
+                "NACE": {
+                    "label": "Economic activity (NACE Rev. 2)",
+                    "category": {
+                        "index": {
+                            "TOTAL": 0,
+                            "A": 1,
+                            "B-E": 2,
+                            "F": 3,
+                            "G_I": 4,
+                            "H_J": 5,
+                            "K-N": 6,
+                            "O": 7,
+                            "P": 8,
+                            "Q": 9,
+                            "R-U": 10
+                        },
+                        "label": {
+                            "TOTAL": "TOTAL",
+                            "A": "Agriculture, forestry and fishing",
+                            "B-E": "Industry",
+                            "F": "Construction",
+                            "G_I": "Trade, accommodation and food service activities",
+                            "H_J": "Transportation, storage, information and communication",
+                            "K-N": "Financial, insurance, scientific and administrative activities; real estate activities",
+                            "O": "Public administration and defence, compulsory social security",
+                            "P": "Education",
+                            "Q": "Human health and social work activities",
+                            "R-U": "Other activities"
+                        }
+                    },
+                    "extension": {
+                        "elimination": true,
+                        "eliminationValueCode": "TOTAL",
+                        "show": "code_value"
+                    }
+                },
+                "ContentsCode": {
+                    "label": "Indicator",
+                    "category": {
+                        "index": {
+                            "NBL061": 0,
+                            "NBL0611": 1
+                        },
+                        "label": {
+                            "NBL061": "Number (thousand)",
+                            "NBL0611": "%"
+                        },
+                        "unit": {
+                            "NBL061": {
+                                "base": "number, thousand",
+                                "decimals": 1
+                            },
+                            "NBL0611": {
+                                "base": "per cent",
+                                "decimals": 1
+                            }
+                        }
+                    },
+                    "extension": {
+                        "elimination": false,
+                        "refperiod": {
+                            "NBL061": "",
+                            "NBL0611": ""
+                        },
+                        "show": "value",
+                        "measuringType": {
+                            "NBL061": "Flow",
+                            "NBL0611": "Flow"
+                        },
+                        "priceType": {
+                            "NBL061": "NotApplicable",
+                            "NBL0611": "NotApplicable"
+                        },
+                        "adjustment": {
+                            "NBL061": "None",
+                            "NBL0611": "None"
+                        }
+                    }
+                },
+                "TIME": {
+                    "label": "Time period",
+                    "category": {
+                        "index": {
+                            "2021": 0,
+                            "2022": 1,
+                            "2023": 2,
+                            "2024": 3,
+                            "2025": 4
+                        },
+                        "label": {
+                            "2021": "2021",
+                            "2022": "2022",
+                            "2023": "2023",
+                            "2024": "2024",
+                            "2025": "2025"
+                        }
+                    },
+                    "extension": {
+                        "elimination": false,
+                        "show": "code"
+                    }
+                }
+            },
+            "extension": {
+                "px": {
+                    "infofile": "001",
+                    "tableid": "NBL061",
+                    "decimals": 1,
+                    "official-statistics": true,
+                    "aggregallowed": true,
+                    "copyright": false,
+                    "language": "en",
+                    "contents": "Employed by economic activity (NACE Rev. 2.) and region",
+                    "descriptiondefault": false,
+                    "heading": ["ContentsCode", "TIME"],
+                    "stub": ["AREA", "NACE"],
+                    "matrix": "NBL061",
+                    "subject-code": "EMP",
+                    "subject-area": "Labour market"
+                },
+                "discontinued": null,
+                "contact": [
+                    {
+                        "name": "Informācijas un lietotāju atbalsta daļa",
+                        "organization": "Central Statistical Bureau of Latvia",
+                        "phone": "",
+                        "mail": "info@csp.gov.lv",
+                        "raw": "Informācijas un lietotāju atbalsta daļa, Central Statistical Bureau of Latvia#  #info@csp.gov.lv"
+                    }
+                ]
+            },
+            "value": [
+                864, 886.2, 884.2, 877.4, 883.1, 100, 100, 100, 100, 100, 58.5, 59.9, 59.3, 60.3,
+                60.1, 6.8, 6.8, 6.7, 6.9, 6.8, 131.3, 137.7, 132.5, 127.4, 128.7, 15.2, 15.5, 15,
+                14.5, 14.6, 72.3, 72.1, 70.3, 64.8, 62.1, 8.4, 8.1, 7.9, 7.4, 7, 157.9, 166.2,
+                156.6, 150.5, 156.2, 18.3, 18.8, 17.7, 17.2, 17.7, 102.3, 108.5, 115.2, 112.7, 104,
+                11.8, 12.2, 13, 12.8, 11.8, 93.8, 94.3, 99.4, 98.9, 103.8, 10.9, 10.6, 11.2, 11.3,
+                11.8, 62.7, 62.5, 57.2, 63.6, 65.6, 7.3, 7.1, 6.5, 7.3, 7.4, 82.3, 82.5, 82.4, 76.8,
+                78.6, 9.5, 9.3, 9.3, 8.8, 8.9, 58.3, 59.8, 64.6, 71.6, 69.8, 6.8, 6.7, 7.3, 8.2,
+                7.9, 42.5, 41.2, 45, 48.5, 50.8, 4.9, 4.6, 5.1, 5.5, 5.7, 429.3, 424.1, 429.8,
+                432.8, 431.1, 100, 100, 100, 100, 100, 3, 3.6, 5.4, 5.3, 4.6, 0.7, 0.9, 1.3, 1.2,
+                1.1, 52.7, 53.6, 50.4, 50, 51.2, 12.3, 12.6, 11.7, 11.5, 11.9, 32.8, 32.2, 34.4,
+                31.3, 26.5, 7.6, 7.6, 8, 7.2, 6.2, 89.9, 88.6, 83.3, 83.5, 87.7, 20.9, 20.9, 19.4,
+                19.3, 20.3, 66.9, 68.3, 73, 72, 67, 15.6, 16.1, 17, 16.6, 15.5, 63.9, 63.2, 65.6,
+                66.3, 70.8, 14.9, 14.9, 15.3, 15.3, 16.4, 31.1, 29.6, 26.7, 28.8, 26, 7.2, 7, 6.2,
+                6.6, 6, 36.2, 33.9, 35.9, 35.7, 35.5, 8.4, 8, 8.4, 8.2, 8.2, 29.5, 29.7, 31.5, 33.3,
+                32.4, 6.9, 7, 7.3, 7.7, 7.5, 22.5, 20.8, 22.5, 25.7, 27.4, 5.2, 4.9, 5.2, 5.9, 6.4,
+                112.4, 118.3, 115.8, 123.6, 125.5, 100, 100, 100, 100, 100, 15.6, 16.7, 12.5, 15,
+                15.7, 13.9, 14.1, 10.8, 12.1, 12.5, 18.9, 19.6, 20.9, 23.1, 22.7, 16.8, 16.6, 18,
+                18.7, 18.1, 10.1, 11.4, 7.6, 8, 10.9, 9, 9.6, 6.6, 6.4, 8.7, 16.6, 18.6, 20.1, 20.6,
+                19.4, 14.8, 15.7, 17.3, 16.7, 15.5, 7.9, 8.7, 8.8, 9.2, 7.4, 7, 7.3, 7.6, 7.4, 5.9,
+                9, 9.5, 9.9, 9.4, 9.9, 8, 8, 8.6, 7.6, 7.9, 8.4, 9.2, 9.2, 9.8, 10.3, 7.4, 7.8, 7.9,
+                7.9, 8.2, 11.2, 10.2, 12.5, 13.1, 13.4, 10, 8.6, 10.8, 10.6, 10.7, 7.8, 7.8, 7.9,
+                9.4, 9, 6.9, 6.6, 6.8, 7.6, 7.2, 6.6, 6.6, 6.3, 5.9, 6.5, 5.9, 5.6, 5.4, 4.8, 5.2,
+                116, 132.3, 134, 121.5, 125, 100, 100, 100, 100, 100, 11.6, 14.8, 15.3, 13.3, 15,
+                10, 11.2, 11.4, 10.9, 12, 24.7, 28.9, 26.4, 22.6, 23.7, 21.3, 21.8, 19.7, 18.6,
+                18.9, 11.2, 9.7, 11.7, 10.8, 11.8, 9.7, 7.3, 8.7, 8.9, 9.5, 17.8, 22.5, 22.6, 19.2,
+                19.9, 15.3, 17, 16.9, 15.8, 16, 11.2, 12.7, 12.8, 11.9, 10.7, 9.7, 9.6, 9.5, 9.8,
+                8.6, 7.6, 8.3, 10.3, 9, 8.3, 6.5, 6.3, 7.7, 7.4, 6.6, 6.6, 7.9, 7.1, 7.2, 7.7, 5.7,
+                5.9, 5.3, 5.9, 6.1, 12.2, 14.8, 12.3, 11.3, 11.7, 10.5, 11.2, 9.2, 9.3, 9.4, 7.3,
+                7.4, 8.1, 9.8, 9.7, 6.3, 5.6, 6, 8, 7.7, 5.5, 5, 7, 6, 5.8, 4.7, 3.8, 5.2, 4.9, 4.7,
+                100.1, 103.5, 102.3, 101.6, 104.4, 100, 100, 100, 100, 100, 12.1, 11.4, 13.3, 14.1,
+                13, 12.1, 11, 13, 13.9, 12.4, 17.9, 18.1, 18.1, 17.6, 16.9, 17.9, 17.5, 17.7, 17.3,
+                16.2, 11, 11.7, 10.8, 8.2, 8.2, 11, 11.3, 10.5, 8, 7.8, 18.8, 19.7, 15.6, 15.6,
+                17.4, 18.7, 19, 15.2, 15.4, 16.7, 7.4, 8.7, 9.9, 9.6, 7.9, 7.4, 8.4, 9.7, 9.5, 7.5,
+                6.5, 7.2, 7.2, 6.3, 7.4, 6.5, 7, 7.1, 6.2, 7, 7.3, 6.7, 6.3, 7.4, 8.8, 7.3, 6.4,
+                6.1, 7.3, 8.4, 9.5, 10.1, 10.6, 8.7, 9.8, 9.5, 9.8, 10.4, 8.5, 9.4, 5.2, 5.5, 5.8,
+                7.8, 7.3, 5.2, 5.3, 5.7, 7.7, 7, 3.8, 4.1, 4.6, 6.2, 7.5, 3.8, 3.9, 4.5, 6.1, 7.2,
+                106.2, 107.9, 102.3, 97.9, 97, 100, 100, 100, 100, 100, 16.1, 13.4, 12.7, 12.7,
+                11.9, 15.2, 12.4, 12.4, 12.9, 12.2, 17.1, 17.5, 16.9, 14.2, 14.2, 16.1, 16.2, 16.5,
+                14.5, 14.7, 7.1, 7, 5.7, 6.6, 4.7, 6.7, 6.5, 5.6, 6.7, 4.8, 14.8, 16.7, 15, 11.6,
+                11.7, 14, 15.5, 14.7, 11.8, 12, 9, 10.2, 10.7, 10, 11, 8.4, 9.4, 10.4, 10.3, 11.4,
+                6.8, 6.2, 6.3, 7.8, 7.5, 6.4, 5.7, 6.1, 7.9, 7.7, 9.4, 9.2, 7.9, 10.5, 12.9, 8.8,
+                8.5, 7.8, 10.7, 13.3, 13.2, 13.5, 11, 8.1, 8.2, 12.4, 12.5, 10.8, 8.3, 8.4, 8.5,
+                9.4, 11.3, 11.3, 11.4, 8, 8.7, 11, 11.6, 11.8, 4, 4.7, 4.6, 4.7, 3.5, 3.8, 4.4, 4.5,
+                4.8, 3.6
+            ]
+        }
+    }
+}

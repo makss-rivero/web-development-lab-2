@@ -172,6 +172,21 @@ button:not(:disabled):hover {
     flex-shrink: 0;
     font-size: 12px;
 }
+.data-details {
+    margin-top: 6px;
+}
+.data-details summary {
+    width: fit-content;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.data-details ul {
+    display: grid;
+    gap: 8px;
+    margin-top: 10px;
+    padding-left: 18px;
+}
 .data-status[data-error='true'] {
     padding: 12px 16px;
     border: 1px solid #e4cba2;

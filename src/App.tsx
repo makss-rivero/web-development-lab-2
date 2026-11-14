@@ -5,15 +5,18 @@ import RegionProfile from './components/RegionProfile';
 import {
     DEFAULT_REGION,
     DEFAULT_YEAR,
+    getInitialStatistics,
     LAYERS,
     loadStatistics,
     SOURCES,
     YEARS,
 } from './data/statistics';
-import type { Layer, RegionCode, Statistics } from './data/statistics';
+import type { Layer, RegionCode, Statistics, TableId } from './data/statistics';
+
+const dataDate = new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium', timeZone: 'UTC' });
 
 export default function App() {
-    const [statistics, setStatistics] = useState<Statistics>({ tables: {}, failed: [] });
+    const [statistics, setStatistics] = useState<Statistics>(getInitialStatistics);
     const [loading, setLoading] = useState(true);
     const [year, setYear] = useState(DEFAULT_YEAR);
     const [region, setRegion] = useState<RegionCode>(DEFAULT_REGION);
@@ -38,13 +41,13 @@ export default function App() {
         setLoading(false);
     }
 
-    const { tables, failed } = statistics;
-    let status = 'Statistics loaded.';
+    const { tables, failed, errors } = statistics;
+    let status = 'Statistics updated from the official source.';
     if (loading) {
-        status = 'Loading official statistics…';
+        status = 'Showing available statistics while checking for updates…';
     } else if (failed.length > 0) {
-        status = `Could not load: ${failed.map((id) => SOURCES[id].label).join(', ')}. `;
-        status += 'Earlier figures are kept when available; — means unavailable. Retry to update.';
+        status = `Live update unavailable for: ${failed.map((id) => SOURCES[id].label).join(', ')}. `;
+        status += 'Showing saved official figures. Check data dates below or retry the update.';
     }
 
     return (
@@ -95,7 +98,42 @@ export default function App() {
                     </label>
                 </section>
                 <div className="data-status" data-error={failed.length > 0 && !loading}>
-                    <p role="status">{status}</p>
+                    <div>
+                        <p role="status">{status}</p>
+                        <details className="data-details">
+                            <summary>Data availability and dates</summary>
+                            <ul>
+                                {(Object.keys(SOURCES) as TableId[]).map((id) => {
+                                    const table = tables[id];
+                                    return (
+                                        <li key={id}>
+                                            <strong>{SOURCES[id].label}:</strong>{' '}
+                                            {table ? (
+                                                <>
+                                                    {table.origin === 'live'
+                                                        ? 'Updated this visit'
+                                                        : 'Saved official copy'}
+                                                    {' · retrieved '}
+                                                    {dataDate.format(new Date(table.fetchedAt))}
+                                                    {table.data.updated && (
+                                                        <>
+                                                            {' · source updated '}
+                                                            {dataDate.format(
+                                                                new Date(table.data.updated),
+                                                            )}
+                                                        </>
+                                                    )}
+                                                </>
+                                            ) : (
+                                                'Unavailable'
+                                            )}
+                                            {errors[id] && <p>{errors[id]}</p>}
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </details>
+                    </div>
                     <button type="button" disabled={loading} onClick={() => void reload()}>
                         {failed.length > 0 ? 'Retry' : 'Refresh data'}
                     </button>
